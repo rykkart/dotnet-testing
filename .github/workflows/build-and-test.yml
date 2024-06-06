@@ -25,16 +25,10 @@ jobs:
       run: dotnet build --no-restore
       
     - name: Test   
-      uses: b3b00/coverlet-action@1.2.5
-      with:
-        testProject: '**/**.Tests.csproj'
-        output: './test-results/coverage.json '
-        outputFormat: 'json'
-        excludes: '[program]*,[test]test.*'
-        threshold: 80
+      run: dotnet test --collect:"XPlat Code Coverage;Format=json"
 
     - name: Publish Test Results
       uses: EnricoMi/publish-unit-test-result-action@v2.16.1
       with:
         files: |
-          test-results/**/*.json
+          **/**/TestResults/**/*.json
