@@ -28,7 +28,7 @@ jobs:
       uses: b3b00/coverlet-action@1.2.5
       with:
         testProject: '**/**.Tests.csproj'
-        output: 'test-results/coverage.json '
+        output: './test-results/coverage.json '
         outputFormat: 'json'
         excludes: '[program]*,[test]test.*'
         threshold: 80
