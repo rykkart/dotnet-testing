@@ -3,5 +3,7 @@ FROM rykkart/dotnet-testing-nugets:latest AS restore
 WORKDIR /app
 
 COPY . .
+WORKDIR /app/Integration.Test.Helper/
 
-RUN dotnet build -c Release
+
+RUN dotnet build -c Release --no-restore
