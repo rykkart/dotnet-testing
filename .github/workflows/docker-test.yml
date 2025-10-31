@@ -41,7 +41,7 @@ jobs:
           $tag = "latest"
 
           Write-Host "build.props changed — rebuilding restore image..."
-          docker build -t $imageName:$tag -f Dockerfile.restore .
+          docker build -t "${imageName}:${tag}" -f Dockerfile.restore .
 
           Write-Host "Pushing restore image..."
           docker push "${imageName}:${tag}"
