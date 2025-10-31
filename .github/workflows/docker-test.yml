@@ -62,7 +62,7 @@ jobs:
           $buildImage = "${{ secrets.DOCKERHUB_USERNAME }}/dotnet-testing"
           $tag = "latest"
 
-          Write-Host "Building main Docker image $buildImage:$tag using latest restore image..."
+          Write-Host "Building main Docker image ${buildImage}:${tag} using latest restore image..."
           docker build -t "${buildImage}:${tag}" -f Dockerfile.build .
 
           Write-Host "Pushing main image..."
