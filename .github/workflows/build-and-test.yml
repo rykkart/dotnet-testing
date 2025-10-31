@@ -27,16 +27,15 @@ jobs:
         path: ~/.nuget/packages
         key: props-${{ hashFiles('Directory.Packages.props') }}     
 
-    - name: Restore dependencies
-      if: steps.cache-restore.outputs.cache-hit != 'true'
-      run: dotnet restore
-
     - name: Skip Restore Build
       if: steps.cache-restore.outputs.cache-hit == 'true'
       shell: pwsh
       run: |
-        Write-Host "✅ No changes to Directory.Packages.props — skipping restore dotnet restore"
+        Write-Host "✅ No changes to Directory.Packages.props"
     
+    - name: Restore dependencies
+      run: dotnet restore
+
     - name: Build
       run: dotnet build --no-restore
       
