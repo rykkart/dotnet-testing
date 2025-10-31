@@ -1,0 +1,8 @@
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS restore
+
+WORKDIR /app
+
+COPY . .
+WORKDIR /app/Integration.Test.Helper/
+
+RUN dotnet restore
