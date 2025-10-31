@@ -44,7 +44,7 @@ jobs:
           docker build -t $imageName:$tag -f Dockerfile.restore .
 
           Write-Host "Pushing restore image..."
-          docker push $imageName:$tag
+          docker push "${imageName}:${tag}"
 
           # Create marker file to store in cache
           # New-Item -ItemType File -Path .props-hash -Force | Out-Null
@@ -63,10 +63,10 @@ jobs:
           $tag = "latest"
 
           Write-Host "Building main Docker image $buildImage:$tag using latest restore image..."
-          docker build -t $buildImage:$tag -f Dockerfile.build .
+          docker build -t "${buildImage}:${tag}" -f Dockerfile.build .
 
           Write-Host "Pushing main image..."
-          docker push $buildImage:$tag
+          docker push "${buildImage}:${tag}"
 
       - name: Confirm success
         shell: pwsh
