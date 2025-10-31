@@ -5,11 +5,7 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'Dockerfile.restore'
-      - 'Dockerfile.build'
-      - 'build.props'
-      - '.github/workflows/docker-publish.yml'
+      - 'feature/*'      
 
 jobs:
   build-and-push:
