@@ -1,0 +1,7 @@
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS restore
+
+WORKDIR /app
+
+COPY *.csproj ./
+
+RUN dotnet restore

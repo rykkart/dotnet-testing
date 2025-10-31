@@ -1,0 +1,7 @@
+FROM rykkart/dotnet-testing-nugets:latest AS restore
+
+WORKDIR /app
+
+COPY . .
+
+RUN dotnet build -c Release
