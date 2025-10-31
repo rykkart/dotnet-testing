@@ -47,7 +47,7 @@ jobs:
           docker push "${imageName}:${tag}"
 
           # Create marker file to store in cache
-          # New-Item -ItemType File -Path .props-hash -Force | Out-Null
+          New-Item -ItemType File -Path .props-hash -Force | Out-Null
 
       - name: Skip Restore Build
         if: steps.cache-restore.outputs.cache-hit == 'true'
