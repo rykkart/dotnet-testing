@@ -4,8 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main
-      - 'feature/*'      
+      - main 
 
 jobs:
   build-and-push:
@@ -40,7 +39,7 @@ jobs:
           $imageName = "${{ secrets.DOCKERHUB_USERNAME }}/dotnet-testing-nugets"
           $tag = "latest"
 
-          Write-Host "build.props changed — rebuilding restore image..."
+          Write-Host "Directory.Packages.props changed — rebuilding restore image..."
           docker build -t "${imageName}:${tag}" -f Dockerfile.restore .
 
           Write-Host "Pushing restore image..."
@@ -53,7 +52,7 @@ jobs:
         if: steps.cache-restore.outputs.cache-hit == 'true'
         shell: pwsh
         run: |
-          Write-Host "✅ No changes to build.props — skipping restore image rebuild."
+          Write-Host "✅ No changes to Directory.Packages.props — skipping restore image rebuild."
 
       # --- Step 3: Always build main image using latest restore image ---
       - name: Build and Push Main Image
